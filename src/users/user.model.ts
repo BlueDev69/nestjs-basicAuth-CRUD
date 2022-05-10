@@ -73,3 +73,26 @@ export class CreateUserDto {
   //   @ApiProperty({ required: false, default: true })
   //   isEnabled?: boolean = true;
 }
+
+export class LoginDTO {
+  @IsEmail()
+  @IsString()
+  @MinLength(4)
+  @ApiProperty()
+  email: string;
+
+  @IsString()
+  @MinLength(4)
+  @ApiProperty()
+  password: string;
+}
+
+export interface UserResponse {
+  email: string;
+  username?: string;
+  bio: string;
+  image: string | null;
+}
+export interface AuthResponse extends UserResponse {
+  token: string;
+}
